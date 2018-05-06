@@ -4,7 +4,7 @@ Mat VisuStrain::imageToBinary(Mat start)
 {
 	Mat gray_image, thresh_image;
 	cvtColor(start, gray_image, CV_BGR2GRAY);
-	threshold(gray_image, thresh_image, 120, 255, THRESH_BINARY);
+	threshold(gray_image, thresh_image, 100, 255, THRESH_BINARY);
 
 	medianBlur(thresh_image, thresh_image, 5);
 
@@ -49,8 +49,9 @@ void VisuStrain::printMassCenters(vector<Point2f> mc, vector<vector<Point>> cont
 {
 	cout << "Mass Centers:" << endl;
 
-	float lowest = 0; 
-	
+
+	float lowest = 0;
+
 
 	for (int i = 0; i < contours.size(); i++)
 	{
@@ -63,14 +64,20 @@ void VisuStrain::printMassCenters(vector<Point2f> mc, vector<vector<Point>> cont
 		cout << mc[i] << endl;
 	}
 
-	writeOut << lowest << ", ";
-	cout << endl << "Lowest: " << lowest << endl;
+	cout << endl << "Lowest px : " << lowest << endl;
+	cout << endl << "Lowest mm : " << lowest*.105833333 << endl;
+
+
+	counter++;
+	writeOut << counter << ", " << lowest*.105833333 << endl;
+
+
 
 	//float distance = sqrt(pow(mc[0].x - mc[1].x, 2) + pow(mc[0].y - mc[1].y, 2));
 	//writeOut << distance << "},";
 }
 
-
+/*
 float VisuStrain::getStrain(float gage_length, vector<Point2f> two_points) {
 
 	float diff = two_points[0].y - two_points[1].y;
@@ -79,7 +86,7 @@ float VisuStrain::getStrain(float gage_length, vector<Point2f> two_points) {
 
 	return answ;
 }
-
+*/
 
 Mat VisuStrain::run(Mat image, int count, int if_first, float& gage_length) {
 
@@ -88,7 +95,7 @@ Mat VisuStrain::run(Mat image, int count, int if_first, float& gage_length) {
 	Mat original = image;
 
 	// sub image
-	Mat subImage(image, Rect(1800, 0, 550, 1800));
+	Mat subImage(image, Rect(870, 0, 550, 700));
 	image = subImage;
 	original = subImage;
 	//
@@ -102,13 +109,14 @@ Mat VisuStrain::run(Mat image, int count, int if_first, float& gage_length) {
 	//writeOut << "{" << count << ", ";
 	printMassCenters(mc, contours);		// print mass centers
 
+	/*
 	if (if_first)
 	{
 		gage_length = mc[0].y - mc[1].y;
 		//cout << endl << endl << "GAGE LENGTH SET TO: " << gage_length << endl << endl;
 	}
-
-	float strain = getStrain(gage_length, mc);
+	*/
+	//float strain = getStrain(gage_length, mc);
 	//cout << "Strain:  " << strain << endl << endl;
 
 	//waitKey(0);
@@ -119,7 +127,7 @@ Mat VisuStrain::run(Mat image, int count, int if_first, float& gage_length) {
 	}
 
 	// image shows thresh, originalk shows input image
-	return image;
+	return original;
 }
 
 void VisuStrain::setAndOpenOutFile(String outFileName)

@@ -22,7 +22,7 @@ int main()
 
 	//writeOut.open("StrainOut.csv");
 
-	visu.setAndOpenOutFile("TestUno.csv");
+	visu.setAndOpenOutFile("Data/Run2_middle.csv");
 
 
 	bool if_first = true;
@@ -47,11 +47,13 @@ int main()
 
 	namedWindow("Contour", WINDOW_AUTOSIZE);
 
-	for (int i = 0; i < 49109 + 1; i++)
+	for (int i = 0; i < 162658 + 1; i++)
 	{
 		//cout << setfill(0) << setw(4) << 23;
 
-		picName = "C:/Users/Joe/Desktop/STA_18032/Run1/E507_80C_LTCP_2018-04-27-185200-";
+
+		picName = "C:/Users/Joe/Desktop/STA_18032/Run2/STA_10832_C538_80C_LTCP_1_save_2018-04-28-120011-";
+
 		picName += numDigits(picNum);
 		picName += to_string(picNum);
 		picName += ".tif";
@@ -61,7 +63,11 @@ int main()
 
 		cout << endl << endl << picName << endl << endl;
 
+
+
 		currentFrame = imread(picName);
+
+
 
 		runPic = visu.run(currentFrame, i, if_first, gage_length);
 

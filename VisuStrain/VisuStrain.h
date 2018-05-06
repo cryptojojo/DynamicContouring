@@ -20,6 +20,7 @@ class VisuStrain {
 
 
 private:
+	int counter = 0;
 	ofstream writeOut;
 
 public:
@@ -27,7 +28,7 @@ public:
 	vector<vector<Point>> getContours(Mat);
 	vector<Point2f> getMassCenters(vector<vector<Point>>);
 	void printMassCenters(vector<Point2f>, vector<vector<Point>>);
-	float getStrain(float, vector<Point2f>);
+	//float getStrain(float, vector<Point2f>);
 	Mat run(Mat, int, int, float&);
 
 	void setAndOpenOutFile(String);
