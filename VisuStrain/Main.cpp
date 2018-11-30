@@ -13,9 +13,7 @@
 using namespace cv;
 using namespace std;
 
-
-int main()
-{
+int main() {
 
 	string numDigits(int number);
 	VisuStrain visu;
@@ -24,19 +22,16 @@ int main()
 
 	visu.setAndOpenOutFile("data.csv");
 
-
 	bool if_first = true;
 
 	Mat currentFrame;
 	Mat runPic;
-	vector<Mat> frame;
+	vector < Mat > frame;
 	float gage_length = 0;
 	int picNum = 0;
 	string picName;
 
-
 	//run(currentFrame, 0, if_first, gage_length); // GETS THE FIRST ONE
-
 
 	//visu.run(currentFrame, 0, if_first, gage_length);
 
@@ -44,10 +39,8 @@ int main()
 
 	namedWindow("Contour", WINDOW_AUTOSIZE);
 
-	for (int i = 0; i < 808 + 1; i++)
-	{
+	for (int i = 0; i < 808 + 1; i++) {
 		//cout << setfill(0) << setw(4) << 23;
-
 
 		picName = "C:/Users/Joe/Desktop/DHF_23C_ST_p01_SL_1/DHF_23C_ST_p01_SL_1-";
 
@@ -56,16 +49,11 @@ int main()
 		picName += "_0";
 		picName += ".tif";
 
-
 		picNum++;
 
 		cout << endl << endl << picName << endl << endl;
 
-
-
 		currentFrame = imread(picName);
-
-
 
 		runPic = visu.run(currentFrame, i, if_first, gage_length);
 
@@ -76,7 +64,6 @@ int main()
 	visu.closeOutFile();
 	return 0;
 }
-
 
 string numDigits(int number) {
 

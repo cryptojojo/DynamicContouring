@@ -11,13 +11,10 @@
 #include <stdio.h>
 #include <cmath>
 
-
 using namespace cv;
 using namespace std;
 
-
 class VisuStrain {
-
 
 private:
 	int counter = 0;
@@ -28,22 +25,15 @@ private:
 public:
 	VisuStrain();
 	Mat imageToBinary(Mat);
-	vector<vector<Point>> getContours(Mat);
-	vector<Point2f> getMassCenters(vector<vector<Point>>);
-	void printMassCenters(vector<Point2f>, vector<vector<Point>>);
+	vector < vector < Point >> getContours(Mat);
+	vector < Point2f > getMassCenters(vector < vector < Point >>);
+	void printMassCenters(vector < Point2f >, vector < vector < Point >>);
 	//float getStrain(float, vector<Point2f>);
-	Mat run(Mat, int, int, float&);
+	Mat run(Mat, int, int, float &);
 
 	void setAndOpenOutFile(String);
 	void closeOutFile();
 
-
-
-
-
 };
-
-
-
 
 #endif // !VISU_H
