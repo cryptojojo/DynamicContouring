@@ -1,4 +1,0 @@
-﻿  VisuStrain.cpp
-c:\users\joe\documents\visual studio 2015\projects\visustrain\visustrain\visustrain.cpp(41): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  VisuStrain.vcxproj -> C:\Users\Joe\documents\visual studio 2015\Projects\VisuStrain\x64\Debug\VisuStrain.exe
-  VisuStrain.vcxproj -> C:\Users\Joe\documents\visual studio 2015\Projects\VisuStrain\x64\Debug\VisuStrain.pdb (Full PDB)
